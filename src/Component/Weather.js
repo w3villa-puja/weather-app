@@ -13,7 +13,7 @@ function Weather() {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
         setData(response.data)
-        console.log(response.data)
+        // console.log(response.data)
       })
       setLocation('')
     }
@@ -36,33 +36,28 @@ function Weather() {
                 <div className='text'>{data.name}</div>
             </div>
             <div className='temp'>
-            {data.main ? <h1 className='degree'>{data.main.temp}∘F</h1> : null}
-                {/* <h1 className='degree'>65∘F</h1> */}
+              {data.main ? <h1 className='degree'>{data.main.temp}∘F</h1> : null}
             </div>
             <div className='description'>
-            {data.weather ? <div className='text'>{data.weather[0].main}</div> : null}
-                {/* <div className='text'>Clouds</div> */}
+              {data.weather ? <div className='text'>{data.weather[0].main}</div> : null}
             </div>
         </div>
 
         {data.name != undefined &&
-        <div className='bottom'>
-          <div className='feels'>
-          {data.main ? <div className='bold'>{data.main.feels_like}∘F</div> : null}
-            {/* <div className='bold'>65∘F</div> */}
-             <div>Feels Like</div>
+          <div className='bottom'>
+            <div className='feels'>
+              { data.main ? <div className='bold'>{data.main.feels_like}∘F</div> : null}
+              <div>Feels Like</div>
+            </div>
+            <div className='humidity'>
+              {data.main ? <div className='bold'>{data.main.humidity}%</div> : null}
+              <div>Humidity</div>
+            </div>
+            <div className='winds'>
+              {data.wind ? <div className='bold'>{data.wind.speed} MPH</div> : null}
+              <div>Wind Speed</div>
+            </div>
           </div>
-          <div className='humidity'>
-          {data.main ? <div className='bold'>{data.main.humidity}%</div> : null}
-            {/* <div className='bold'>15%</div> */}
-            <div>Humidity</div>
-          </div>
-          <div className='winds'>
-          {data.wind ? <div className='bold'>{data.wind.speed} MPH</div> : null}
-            {/* <div className='bold'>12 MPH</div> */}
-            <div>Wind Speed</div>
-          </div>
-        </div>
         }
         
     </div>
