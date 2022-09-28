@@ -36,7 +36,7 @@ function Weather() {
                 <div className='text'>{data.name}</div>
             </div>
             <div className='temp'>
-              {data.main ? <h1 className='degree'>{data.main.temp}∘F</h1> : null}
+              {data.main ? <h1 className='degree'>{(((data.main.temp)-32)*5/9).toFixed(2)}∘C</h1> : null}
             </div>
             <div className='description'>
               {data.weather ? <div className='text'>{data.weather[0].main}</div> : null}
@@ -46,7 +46,7 @@ function Weather() {
         {data.name != undefined &&
           <div className='bottom'>
             <div className='feels'>
-              { data.main ? <div className='bold'>{data.main.feels_like}∘F</div> : null}
+              { data.main ? <div className='bold'>{(((data.main.feels_like)-32)*5/9).toFixed(2)}∘C</div> : null}
               <div>Feels Like</div>
             </div>
             <div className='humidity'>
